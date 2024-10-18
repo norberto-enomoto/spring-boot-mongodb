@@ -1,3 +1,4 @@
+```mermaid
 graph TB
     subgraph "Camada de Cliente"
         Client[Cliente]
@@ -45,6 +46,11 @@ graph TB
     class DB1,DB2,DB3 database;
     class APIGW gateway;
     class Eureka discovery;
+```    
+
+## Executar
+1. ./build-image.sh
+2. docker compose up
 
 ## Exemplos de Chamadas para os Endpoints
 

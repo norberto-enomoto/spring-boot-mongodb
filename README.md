@@ -49,61 +49,6 @@ graph TB
     class Eureka discovery;
 ```    
 
-## Modelo Relacional
-```mermaid
-erDiagram
-    CLIENTE ||--o{ PEDIDO : faz
-    CLIENTE {
-        int id_cliente PK
-        string nome
-        string email
-        string endereco
-    }
-    PEDIDO ||--|{ ITEM_PEDIDO : contem
-    PEDIDO {
-        int id_pedido PK
-        int id_cliente FK
-        date data_pedido
-        float valor_total
-    }
-    PRODUTO ||--o{ ITEM_PEDIDO : possui
-    PRODUTO {
-        int id_produto PK
-        string nome
-        float preco
-        int estoque
-    }
-    ITEM_PEDIDO {
-        int id_item_pedido PK
-        int id_pedido FK
-        int id_produto FK
-        int quantidade
-        float preco_unitario
-    }
-```
-
-# Modelo MongoDB
-```mermaid
-graph TD
-    A[Cliente] -->|Documento| B((_id))
-    A --> C(nome)
-    A --> D(email)
-    A --> E(endereco)
-    A -->|Array| F[Pedidos]
-    F -->|Documento| G((_id))
-    F --> H(data_pedido)
-    F --> I(valor_total)
-    F -->|Array| J[Itens]
-    J -->|Documento| K(produto_id)
-    J --> L(quantidade)
-    J --> M(preco_unitario)
-    N[Produto] -->|Documento| O((_id))
-    N --> P(nome)
-    N --> Q(preco)
-    N --> R(estoque)
-
-```
-
 ## Executar
 1. ./build-image.sh
 2. docker compose up
